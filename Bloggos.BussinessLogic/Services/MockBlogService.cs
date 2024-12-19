@@ -32,15 +32,18 @@ namespace Bloggos.BussinessLogic.Services
                         Destinations = new List<LinkModel>
                         {
                             new LinkModel(){
+                                DestinationId = 2,
                                 Title = "Електричество",
                                 Description = "Всички таблици, схеми и диаграми от всички справочници",
                             },
                             new LinkModel()
                             {
+                                DestinationId = 3,
                                 Title = "Механични",
                                 Description = "Механични справочници",
                             },
                             new LinkModel(){
+                                DestinationId = 4,
                                 Title = "Математика",
                                 Description = "Всички таблици, схеми и диаграми от всички справочници",
                             },
