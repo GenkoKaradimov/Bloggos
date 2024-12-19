@@ -34,18 +34,21 @@ namespace Bloggos.BussinessLogic.Services
                             new LinkModel(){
                                 DestinationId = 2,
                                 Title = "Електричество",
-                                Description = "Всички таблици, схеми и диаграми от всички справочници",
+                                Description = "Всички таблици, схеми и диаграми от всички справочници.",
+                                ImageSource = "/images/kotka.jpg"
                             },
                             new LinkModel()
                             {
                                 DestinationId = 3,
                                 Title = "Механични",
                                 Description = "Механични справочници",
+                                ImageSource = "/images/kotka.jpg"
                             },
                             new LinkModel(){
                                 DestinationId = 4,
                                 Title = "Математика",
                                 Description = "Всички таблици, схеми и диаграми от всички справочници",
+                                ImageSource = "/images/kotka.jpg"
                             },
                         }
                     };

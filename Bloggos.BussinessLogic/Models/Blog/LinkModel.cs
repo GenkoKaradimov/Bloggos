@@ -12,6 +12,8 @@ namespace Bloggos.BussinessLogic.Models.Blog
 
         public string Description { get; set; }
 
+        public string ImageSource { get; set; }
+
         public int DestinationId { get; set; }
 
         public LinkDestination DestinationType { get; set; }

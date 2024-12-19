@@ -11,6 +11,6 @@
 
         public string Description { get; set; }
 
-        public Dictionary<string, string> Destinations { get; set; }
+        public IEnumerable<MapLinkViewModel> Destinations { get; set; }
     }
 }

@@ -1,8 +1,31 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Bloggos.Web.Models.Blog.MapViewModel
+@{
+    ViewData["Title"] = Model.Title;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2>@Model.Title</h2>
+<hr />
+
+<p>@Model.Description</p>
+<hr />
+
+<div class="row">
+    @foreach (var x in Model.Destinations)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="#" class="card mb-3" style="max-width: 540px; text-decoration:none;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="@x.ImageSource" class="img-fluid rounded-start" alt="kotka">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@x.Title</h5>
+                            <p class="card-text" style="color:black">@x.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
 </div>
