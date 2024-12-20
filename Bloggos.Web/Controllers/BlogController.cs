@@ -15,11 +15,6 @@ namespace Bloggos.Web.Controllers
             _blogService = blogService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public async Task<ActionResult> Map(int id)
         {
             var model = new MapViewModel();
