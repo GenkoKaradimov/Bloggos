@@ -51,9 +51,25 @@ namespace Bloggos.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Article(int id)
+        public async Task<ActionResult> Article(int id)
         {
-            return View();
+            var model = new ArticleViewModel();
+
+            try
+            {
+                var data = await _blogService.GetArticleAsync(id);
+
+                model.Id = data.Id;
+                model.Title = data.Title;
+                model.HtmlContent = data.HtmlContent;
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
         }
     }
 }

@@ -2,6 +2,20 @@
 @{
     ViewData["Title"] = Model.Title;
 }
+@functions {
+    public string GenerateLink(Bloggos.Web.Models.Blog.LinkDestinationViewModel type, int id)
+    {
+        switch (type)
+        {
+            case Bloggos.Web.Models.Blog.LinkDestinationViewModel.MapPage:
+                return $"/Blog/Map/{id}";
+            case Bloggos.Web.Models.Blog.LinkDestinationViewModel.ArticlePage:
+                return $"/Blog/Article/{id}";
+            default:
+                return "#";
+        }
+    }
+}
 
 <h2>@Model.Title</h2>
 <hr />
@@ -13,7 +27,7 @@
     @foreach (var x in Model.Destinations)
     {
         <div class="col-12 col-md-6 col-lg-4">
-            <a href="#" class="card mb-3" style="max-width: 540px; text-decoration:none;">
+            <a href="@GenerateLink(x.DestinationType, x.DestinationId)" class="card mb-3" style="max-width: 540px; text-decoration:none;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="@x.ImageSource" class="img-fluid rounded-start" alt="kotka">
