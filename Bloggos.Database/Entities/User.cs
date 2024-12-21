@@ -14,11 +14,11 @@ namespace Bloggos.Database.Entities
         public string Username { get; set; }
 
         [Required]
-        [StringLength(64, ErrorMessage = "Password hash must be exactly 64 characters.")]
+        [StringLength(44, ErrorMessage = "Password hash must be exactly 44 characters.")]
         public string PasswordHash { get; set; }
 
         [Required]
-        [StringLength(16, ErrorMessage = "Password salt must be exactly 16 characters.")]
+        [StringLength(24, ErrorMessage = "Password salt must be exactly 24 characters.")]
         public string PasswordSalt { get; set; }
 
         public bool IsAdmin { get; set; } = false;
