@@ -1,10 +1,15 @@
 using Bloggos.BussinessLogic.IServices;
 using Bloggos.BussinessLogic.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register DbContext
+builder.Services.AddDbContext<Bloggos.Database.BloggosDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetSection("DatabaseConnectionStrings")["DefaultConnection"]));
 
 // Add Services
 builder.Services.AddScoped<IBlogService, MockBlogService>();
