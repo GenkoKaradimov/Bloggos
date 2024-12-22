@@ -12,6 +12,8 @@ namespace Bloggos.Database
     {
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Article> Articles { get; set; }
+
         public BloggosDbContext(DbContextOptions<BloggosDbContext> options)
             : base(options)
         {
@@ -26,6 +28,14 @@ namespace Bloggos.Database
                 entity.HasKey(user => user.Username);
 
                 entity.Property(user => user.Username)
+                    .ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Article>(entity =>
+            {
+                entity.HasKey(article => article.Id);
+
+                entity.Property(article => article.Id)
                     .ValueGeneratedOnAdd();
             });
         }

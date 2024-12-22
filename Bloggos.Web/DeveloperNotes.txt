@@ -1,0 +1,8 @@
+# TODO New Features
+1. Article - add boolean property - IsVisible
+
+# TODO Bug Fixing
+
+# TODO Critical Bugs
+
+# Done Tasks

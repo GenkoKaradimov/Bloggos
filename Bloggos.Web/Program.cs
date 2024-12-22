@@ -20,7 +20,7 @@ builder.Services.AddDbContext<Bloggos.Database.BloggosDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetSection("DatabaseConnectionStrings")["DefaultConnection"]));
 
 // Add Services
-builder.Services.AddScoped<IBlogService, MockBlogService>();
+builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();

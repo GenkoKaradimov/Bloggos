@@ -1,5 +1,8 @@
 ﻿using Bloggos.BussinessLogic.IServices;
 using Bloggos.BussinessLogic.Models.Blog;
+using Bloggos.Database;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,31 +11,60 @@ using System.Threading.Tasks;
 
 namespace Bloggos.BussinessLogic.Services
 {
-    public class MockBlogService : IBlogService
+    public class BlogService : IBlogService
     {
-        public MockBlogService() 
+        private readonly BloggosDbContext _context;
+
+        public BlogService(BloggosDbContext context)
         {
+            _context = context;
         }
 
+        #region Articles
         public async Task<ArticleModel> GetArticleAsync(int id)
         {
-            switch (id)
+            var article = await _context.Articles.SingleOrDefaultAsync(x => x.Id == id);
+            if (article == null) throw new ArgumentException("Article is not found!");
+
+            var model = new Models.Blog.ArticleModel()
             {
-                case 1:
-                    return new ArticleModel
-                    {
-                        Id = 1,
-                        Title = "Тригонометрия",
-                        HtmlContent = "<p>тригонометрични формули</p>"
-                    };
-                case 2:
-                    return new ArticleModel
-                    {
-                    };
-                default:
-                    throw new NotImplementedException();
-            }
+                Id = article.Id,
+                Title = article.Title,
+                HtmlContent = article.HtmlContent
+            };
+
+            return model;
         }
+
+        public async Task<ArticleModel> AddArticleAsync(ArticleModel model)
+        {
+            var article = new Database.Entities.Article()
+            {
+                Title = model.Title,
+                HtmlContent= model.HtmlContent
+            };
+
+            await _context.Articles.AddAsync(article);
+            await _context.SaveChangesAsync();
+
+            model.Id = article.Id;
+            return model;
+        }
+
+        public async Task<ArticleModel> EditArticleAsync(ArticleModel model)
+        {
+            var article = await _context.Articles.SingleOrDefaultAsync(x => x.Id == model.Id);
+            if (article == null) throw new ArgumentException("Article is not found!");
+
+            article.Title = model.Title;
+            article.HtmlContent = model.HtmlContent;
+
+            await _context.SaveChangesAsync();
+
+            return model;
+        }
+
+        #endregion
 
         public async Task<MapPageModel> GetMapPageAsync(int id)
         {
