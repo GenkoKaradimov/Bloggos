@@ -53,8 +53,9 @@ namespace Bloggos.Web.Controllers
             }
 
             HttpContext.Session.SetString("Username", user.Username);
-            
-            if(user.IsAdmin) return RedirectToAction("Index", "Admin");
+            HttpContext.Session.SetInt32("IsAdmin", user.IsAdmin ? 1 : 0);
+
+            if (user.IsAdmin) return RedirectToAction("Admin", "User");
             else return RedirectToAction("Index", "Home");
         }
 
@@ -92,8 +93,9 @@ namespace Bloggos.Web.Controllers
             }
 
             HttpContext.Session.SetString("Username", user.Username);
+            HttpContext.Session.SetInt32("IsAdmin", user.IsAdmin ? 1 : 0);
 
-            if (user.IsAdmin) return RedirectToAction("Index", "Admin");
+            if (user.IsAdmin) return RedirectToAction("Admin", "User");
             else return RedirectToAction("Index", "Home");
         }
 
@@ -103,6 +105,12 @@ namespace Bloggos.Web.Controllers
             HttpContext.Session.Clear();
 
             return RedirectToAction("Login", "User");
+        }
+
+        [HttpGet]
+        public ActionResult Admin()
+        {
+            return View();
         }
     }
 }

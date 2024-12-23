@@ -21,6 +21,21 @@ namespace Bloggos.BussinessLogic.Services
         }
 
         #region Articles
+
+        public async Task<List<ArticleModel>> AllArticles()
+        {
+            var articles = _context.Articles.AsQueryable();
+
+            var resp = await articles.Select(x => new ArticleModel()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                HtmlContent = x.HtmlContent
+            }).ToListAsync();
+
+            return resp;
+        }
+
         public async Task<ArticleModel> GetArticleAsync(int id)
         {
             var article = await _context.Articles.SingleOrDefaultAsync(x => x.Id == id);

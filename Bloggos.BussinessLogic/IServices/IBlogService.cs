@@ -12,6 +12,8 @@ namespace Bloggos.BussinessLogic.IServices
     {
         #region Articles
 
+        Task<List<ArticleModel>> AllArticles();
+
         Task<ArticleModel> GetArticleAsync(int id);
 
         Task<ArticleModel> AddArticleAsync(ArticleModel model);

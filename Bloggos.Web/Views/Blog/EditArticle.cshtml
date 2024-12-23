@@ -1,0 +1,23 @@
+﻿@model Bloggos.Web.Models.Blog.ArticleViewModel
+@{
+    ViewData["Title"] = "Edit Article | Administration";
+}
+
+<h2>Edit Article</h2>
+<hr />
+
+<form method="post" asp-action="EditArticle" asp-controller="Blog" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="Id" class="form-label">Id</label>
+        <input type="text" class="form-control" id="Id" name="Id" value="@Model.Id" disabled>
+    </div>
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required>
+    </div>
+    <div class="mb-3">
+        <label for="HtmlContent" class="form-label">HtmlContent</label>
+        <textarea class="form-control" id="HtmlContent" name="HtmlContent" rows="3" required>@Model.HtmlContent</textarea>
+    </div>
+    <button type="submit" class="btn btn-outline-danger">Edit</button>
+</form>
