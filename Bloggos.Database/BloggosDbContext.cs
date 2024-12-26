@@ -16,6 +16,10 @@ namespace Bloggos.Database
 
         public DbSet<Image> Images { get; set; }
 
+        public DbSet<Map> Maps { get; set; }
+
+        public DbSet<MapLink> MapLinks { get; set; }
+
         public BloggosDbContext(DbContextOptions<BloggosDbContext> options)
             : base(options)
         {
@@ -47,6 +51,29 @@ namespace Bloggos.Database
 
                 entity.Property(image => image.Id)
                     .ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Map>(entity =>
+            {
+                entity.HasKey(maps => maps.Id);
+
+                entity.Property(maps => maps.Id)
+                    .ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<MapLink>(entity =>
+            {
+                entity.HasKey(link => link.Id);
+
+                entity.Property(link => link.Id)
+                    .ValueGeneratedOnAdd();
+
+                entity
+                    .HasOne(link => link.Map)
+                    .WithMany(map => map.MapLinks)
+                    .HasPrincipalKey(map => map.Id)
+                    .HasForeignKey(link => link.MapId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

@@ -1,0 +1,48 @@
+﻿@model Bloggos.Web.Models.Blog.MapViewModel
+@{
+    ViewData["Title"] = "Edit Map | Administration";
+}
+
+<h2>Edit Map</h2>
+<hr />
+
+<form method="post" asp-action="EditMap" asp-controller="Blog" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="Id" class="form-label">Id</label>
+        <input type="text" class="form-control" id="Id" name="Id" value="@Model.Id" disabled>
+    </div>
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required>
+    </div>
+    <div class="mb-3">
+        <label for="DescriptionHTML" class="form-label">Description HTML</label>
+        <textarea class="form-control" id="DescriptionHTML" name="DescriptionHTML" rows="3" required>@Model.DescriptionHTML</textarea>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Edit</button>
+</form>
+<hr />
+<h4>Map Links</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var link in Model.Destinations)
+        {
+            <tr>
+                <th>@link.Id</th>
+                <td>@link.Title</td>
+                <td>@link.Description</td>
+                <td>
+                    <a asp-action="EditMapLink" asp-controller="Blog" asp-route-id="@link.Id" class="btn btn-outline-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

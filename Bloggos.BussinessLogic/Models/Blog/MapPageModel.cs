@@ -15,7 +15,7 @@ namespace Bloggos.BussinessLogic.Models.Blog
 
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string DescriptionHTML { get; set; }
 
         public IEnumerable<LinkModel> Destinations { get; set; }
     }

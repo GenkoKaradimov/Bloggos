@@ -1,0 +1,55 @@
+﻿@model Bloggos.Web.Models.Blog.MapLinkViewModel
+@{
+    ViewData["Title"] = "Edit Map Link | Administration";
+}
+
+<h2>Edit Map Link</h2>
+<hr />
+
+<form method="post" asp-action="EditMapLink" asp-controller="Blog" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="Id" class="form-label">Id</label>
+        <input type="text" class="form-control" id="Id" name="Id" value="@Model.Id" required>
+    </div>
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required>
+    </div>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <textarea class="form-control" id="Description" name="Description" rows="3" required>@Model.Description</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="ImageSource" class="form-label">ImageSource</label>
+        <input type="text" class="form-control" id="ImageSource" name="ImageSource" value="@Model.ImageSource" required>
+    </div>
+    <div class="mb-3">
+        <label for="MapId" class="form-label">MapId</label>
+        <input type="number" class="form-control" id="MapId" name="MapId" value="@Model.MapId" required>
+    </div>
+    <div class="mb-3">
+        <label for="DestinationId" class="form-label">DestinationId</label>
+        <input type="text" class="form-control" id="DestinationId" name="DestinationId" value="@Model.DestinationId" required>
+    </div>
+    <div class="mb-3">
+        <label for="OrderWeight" class="form-label">OrderWeight</label>
+        <input type="number" class="form-control" id="OrderWeight" name="OrderWeight" value="@Model.OrderWeight" required>
+    </div>
+    <div class="mb-3">
+        <label for="DestinationType" class="form-label">Destination Type</label>
+        <select class="form-select" id="DestinationType" name="DestinationType" required>
+            @foreach (var op in Model.DestinationOptions)
+            {
+                @if (op.Key == (int)Model.DestinationType)
+                {
+                    <option value="@op.Key" selected>@op.Value</option>
+                }   
+                else
+                {
+                    <option value="@op.Key">@op.Value</option>
+                };
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Edit Map Link</button>
+</form>

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bloggos.BussinessLogic.Models.Blog
+namespace Bloggos.Database.Entities
 {
-    public class LinkModel
+    public class MapLink
     {
         public int Id { get; set; }
+
+        public int OrderWeight { get; set; }
 
         public string Title { get; set; }
 
@@ -18,10 +20,13 @@ namespace Bloggos.BussinessLogic.Models.Blog
 
         public int DestinationId { get; set; }
 
-        public LinkDestination DestinationType { get; set; }
+        public MapLinkDestinationType DestinationType { get; set; }
+
+        #region Navigational Properties
 
         public int MapId { get; set; }
+        public Entities.Map Map { get; set; }
 
-        public int OrderWeight { get; set; }
+        #endregion
     }
 }
