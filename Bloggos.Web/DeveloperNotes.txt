@@ -1,5 +1,6 @@
 # TODO New Features
 1. Article - add boolean property - IsVisible
+2. Home/Images - make pagination works
 
 # TODO Bug Fixing
 

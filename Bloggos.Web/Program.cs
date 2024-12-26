@@ -22,6 +22,7 @@ builder.Services.AddDbContext<Bloggos.Database.BloggosDbContext>(options =>
 // Add Services
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IHomeService, HomeService>();
 
 var app = builder.Build();
 

@@ -14,6 +14,8 @@ namespace Bloggos.Database
 
         public DbSet<Article> Articles { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
         public BloggosDbContext(DbContextOptions<BloggosDbContext> options)
             : base(options)
         {
@@ -36,6 +38,14 @@ namespace Bloggos.Database
                 entity.HasKey(article => article.Id);
 
                 entity.Property(article => article.Id)
+                    .ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Image>(entity =>
+            {
+                entity.HasKey(image => image.Id);
+
+                entity.Property(image => image.Id)
                     .ValueGeneratedOnAdd();
             });
         }

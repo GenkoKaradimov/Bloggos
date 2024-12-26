@@ -1,0 +1,34 @@
+﻿@model Bloggos.Web.Models.Home.ImagesViewModel
+
+@section scripts {
+    <script src="~/js/home_images.js"></script>
+}
+<h2>Списък Изображения | Администратор</h2>
+<hr />
+
+<button onclick="OpenAddImageForm()" type="button" class="btn btn-outline-primary">Добави</button>
+<hr />
+
+@if (Model.ImagesIds.Any())
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var img in Model.ImagesIds)
+            {
+                <div class="col-12 col-md-4 col-lg-3 mb-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="/Home/Image/@img" class="card-img-top" alt="Id: @img">
+                        <div class="card-body">
+                            <p class="card-text">Id: @img</p>
+                            <button onclick="ReplaceImageForm(@img)" class="btn btn-outline-primary">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p>Няма изображения в базата данни!</p>
+}
