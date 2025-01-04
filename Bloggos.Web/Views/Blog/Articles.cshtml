@@ -1,13 +1,13 @@
 ﻿@model Bloggos.Web.Models.Blog.ArticlesViewModel
 @{
-    ViewData["Title"] = "Article | Administration";
+    ViewData["Title"] = "Списък Статии | Администрация";
 }
 
-<h3>Articles List | Administration</h3>
+<h3>Списък Статии | Администрация</h3>
 <hr />
 
 <div>
-    <a asp-action="CreateArticle" asp-controller="Blog" class="btn btn-outline-primary">Create Article</a>
+    <a asp-action="CreateArticle" asp-controller="Blog" class="btn btn-outline-primary">Създаване на статия</a>
 </div>
 <hr />
 
@@ -17,7 +17,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
+                <th scope="col">Заглавие</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -28,8 +28,8 @@
                     <th>@article.Id</th>
                     <td>@article.Title</td>
                     <td>
-                        <a asp-action="EditArticle" asp-controller="Blog" asp-route-id="@article.Id" class="btn btn-outline-warning">Edit</a>
-                        <a asp-action="Article" asp-controller="Blog" asp-route-id="@article.Id" target="_blank" class="btn btn-outline-primary">View</a>
+                        <a asp-action="EditArticle" asp-controller="Blog" asp-route-id="@article.Id" class="btn btn-outline-warning">Редактирай</a>
+                        <a asp-action="Article" asp-controller="Blog" asp-route-id="@article.Id" target="_blank" class="btn btn-outline-primary">Преглед</a>
                     </td>
                 </tr>
             }
@@ -37,5 +37,5 @@
     </table>
 }
 else{
-    <p>No articles found!</p>
+    <p>Няма открити статии!</p>
 }

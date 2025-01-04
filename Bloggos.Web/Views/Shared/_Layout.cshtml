@@ -25,11 +25,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Магазин</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Услуги</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Услуги
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="Article" asp-route-id="3">Консултиране и планиране на ВЕИ</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="Article" asp-route-id="4">Разработка и изграждане на Фотоволтаици</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="Article" asp-route-id="5">Изграждане на електрически инсталации</a></li>
+                            </ul>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Как се прави</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Map" asp-route-id="6">Как се прави</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Map" asp-route-id="1">Справочник</a>

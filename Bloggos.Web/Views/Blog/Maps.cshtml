@@ -1,13 +1,13 @@
 ﻿@model Bloggos.Web.Models.Blog.MapsViewModel
 @{
-    ViewData["Title"] = "Maps | Administration";
+    ViewData["Title"] = "Карти | Администрация";
 }
 
-<h3>Maps | Administration</h3>
+<h3>Карти | Администрация</h3>
 <hr />
 
 <div>
-    <a asp-action="CreateMap" asp-controller="Blog" class="btn btn-outline-primary">Create Map</a>
+    <a asp-action="CreateMap" asp-controller="Blog" class="btn btn-outline-primary">Създаване на Карта</a>
 </div>
 <hr />
 
@@ -17,8 +17,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Links</th>
+                <th scope="col">Заглавие</th>
+                <th scope="col">Връзки</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -30,9 +30,9 @@
                     <td>@map.Title</td>
                     <td>@map.Destinations.Count()</td>
                     <td>
-                        <a asp-action="Map" asp-controller="Blog" asp-route-id="@map.Id" target="_blank" class="btn btn-outline-primary">View</a>
-                        <a href="/Blog/AddMapLink?mapId=@map.Id" target="_blank" class="btn btn-outline-primary">Add Link</a>
-                        <a asp-action="EditMap" asp-controller="Blog" asp-route-id="@map.Id" target="_blank" class="btn btn-outline-warning">Edit</a>
+                        <a asp-action="Map" asp-controller="Blog" asp-route-id="@map.Id" target="_blank" class="btn btn-outline-primary">Преглед</a>
+                        <a href="/Blog/AddMapLink?mapId=@map.Id" class="btn btn-outline-primary">Добави Линк</a>
+                        <a asp-action="EditMap" asp-controller="Blog" asp-route-id="@map.Id" class="btn btn-outline-warning">Редактиране</a>
                     </td>
                 </tr>
             }
@@ -40,5 +40,5 @@
     </table>
 }
 else{
-    <p>No maps found!</p>
+    <p>Няма открити карти!</p>
 }

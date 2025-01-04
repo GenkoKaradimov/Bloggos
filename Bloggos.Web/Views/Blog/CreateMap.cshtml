@@ -1,19 +1,19 @@
 ﻿@model Bloggos.Web.Models.Blog.MapViewModel
 @{
-    ViewData["Title"] = "Create Map | Administration";
+    ViewData["Title"] = "Създаване на Карта | Администрация";
 }
 
-<h2>Create Map</h2>
+<h2>Създаване на Карта</h2>
 <hr />
 
 <form method="post" asp-action="CreateMap" asp-controller="Blog" enctype="multipart/form-data">
     <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
+        <label for="Title" class="form-label">Заглавие</label>
         <input type="text" class="form-control" id="Title" name="Title" required>
     </div>
     <div class="mb-3">
-        <label for="Description" class="form-label">Description HTML</label>
-        <textarea class="form-control" id="Description" name="Description" rows="3" required></textarea>
+        <label for="DescriptionHTML" class="form-label">Съдържание (HtmlContent)</label>
+        <textarea class="form-control" id="DescriptionHTML" name="DescriptionHTML" rows="3" required></textarea>
     </div>
-    <button type="submit" class="btn btn-outline-primary">Create</button>
+    <button type="submit" class="btn btn-outline-primary">Създаване</button>
 </form>
