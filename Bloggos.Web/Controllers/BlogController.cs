@@ -282,7 +282,8 @@ namespace Bloggos.Web.Controllers
                     Description = x.Description,
                     DestinationId = x.DestinationId,
                     ImageSource = x.ImageSource,
-                    DestinationType = (LinkDestinationViewModel)(int)x.DestinationType
+                    DestinationType = (LinkDestinationViewModel)(int)x.DestinationType,
+                    OrderWeight = x.OrderWeight
                 });
             }
             catch (Exception ex)

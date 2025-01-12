@@ -125,7 +125,8 @@ namespace Bloggos.BussinessLogic.Services
                     ImageSource = y.ImageSource,
                     Description = y.Description,
                     DestinationId = y.DestinationId,
-                    DestinationType = (LinkDestination)(int)y.DestinationType
+                    DestinationType = (LinkDestination)(int)y.DestinationType,
+                    OrderWeight = y.OrderWeight
                 })
             };
 

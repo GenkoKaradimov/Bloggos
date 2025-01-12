@@ -28,6 +28,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Заглавие</th>
+            <th scope="col">Подредба</th>
             <th scope="col">Описание</th>
             <th scope="col"></th>
         </tr>
@@ -38,6 +39,7 @@
             <tr>
                 <th>@link.Id</th>
                 <td>@link.Title</td>
+                <td>@link.OrderWeight</td>
                 <td>@link.Description</td>
                 <td>
                     <a asp-action="EditMapLink" asp-controller="Blog" asp-route-id="@link.Id" class="btn btn-outline-primary">Редактиране</a>
