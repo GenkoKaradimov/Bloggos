@@ -75,6 +75,28 @@ namespace Bloggos.BussinessLogic.Services
             };
         }
 
+        public async Task<UserModel> ChangePassword(ChangePasswordModel model)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == model.Username);
+            if (user == null) throw new ArgumentException("User not found!");
+
+            // Is old Password correct
+            string hash = CalculateHash(model.OldPassword, user.PasswordSalt);
+            if (user.PasswordHash != hash) throw new ArgumentException("Old Password not correct!");
+
+            // set new password
+            string newHash = CalculateHash(model.NewPassword, user.PasswordSalt);
+            user.PasswordHash = newHash;
+
+            await _context.SaveChangesAsync();
+
+            return new UserModel()
+            {
+                Username = user.Username,
+                IsAdmin = user.IsAdmin
+            };
+        }
+
         private string GenerateSalt()
         {
             var saltBytes = new byte[16];

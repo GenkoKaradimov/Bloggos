@@ -15,5 +15,7 @@ namespace Bloggos.BussinessLogic.IServices
         Task<UserModel> LoginUser(UserLoginModel model);
 
         Task<UserModel> RegisterUser(UserRegistrationModel model);
+
+        Task<UserModel> ChangePassword(ChangePasswordModel model);
     }
 }

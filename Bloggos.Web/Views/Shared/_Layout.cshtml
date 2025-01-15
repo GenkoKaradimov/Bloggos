@@ -54,14 +54,17 @@
                                     @loggedUsername
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
+                                    @* <li>
                                         <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Settings">Settings</a>
+                                    </li> *@
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="ChangePassword">Смяна на парола</a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">Изход</a>
                                     </li>
                                 </ul>
                             </div>

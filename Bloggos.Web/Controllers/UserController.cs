@@ -100,6 +100,51 @@ namespace Bloggos.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ChangePassword(Models.User.ChangePasswordViewModel model)
+        {
+            // is user logged in
+            var username = HttpContext.Session.GetString("Username");
+            if (string.IsNullOrEmpty(username)) return RedirectToAction("Login", "User");
+
+            // Validate input model
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                TempData["ErrorMessage"] = String.Join(" ", errors);
+                return View();
+            }
+
+            Bloggos.BussinessLogic.Models.User.UserModel user;
+
+            try
+            {
+                user = await _userService.ChangePassword(new BussinessLogic.Models.User.ChangePasswordModel()
+                {
+                    Username = username,
+                    OldPassword = model.OldPassword,
+                    NewPassword = model.NewPassword
+                });
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                return View();
+            }
+
+            HttpContext.Session.SetString("Username", user.Username);
+            HttpContext.Session.SetInt32("IsAdmin", user.IsAdmin ? 1 : 0);
+
+            if (user.IsAdmin) return RedirectToAction("Admin", "User");
+            else return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public ActionResult Logout()
         {
             HttpContext.Session.Clear();
